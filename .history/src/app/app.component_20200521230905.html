@@ -1,0 +1,30 @@
+<header>
+  <input [(colorPicker)]="color" [style.background]="color"/>
+</header>
+
+
+<div>
+
+  <h2> <input type="checkbox" [(ngModel)]="cTitle">
+    <span>{{ 'title' | translate }}</span>
+
+  </h2>
+
+  <p> <input type="checkbox" [(ngModel)]="cPara">
+     <span>{{ 'para' | translate }}</span>
+
+    </p>
+
+  <input type="checkbox" [(ngModel)]="cLink"> <a href="{{'link'}}">
+     <span>{{ 'linkText' | translate}}</span>
+
+    </a>
+
+  <div>
+    <button (click)="useLanguage('en')" [class.active]="curLang === 'en'">English</button>
+    <button (click)="useLanguage('hi')" [class.active]="curLang === 'hi'">Hindi</button>
+    <button (click)="useLanguage('zh')" [class.active]="curLang === 'zh'">Chinease</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

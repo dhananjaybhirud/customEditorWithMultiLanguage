@@ -1,0 +1,17 @@
+
+<div>
+
+  <h2>{{ 'title' | translate }}</h2>
+
+  <p>{{ 'para' | translate }}</p>
+
+  <a href="{{'link'}}">{{ 'linkText' | translate}}</a>
+
+  <div>
+    <button (click)="useLanguage('en')" [class.active]="curLang === 'en'">English</button>
+    <button (click)="useLanguage('hi')" [class.active]="curLang === 'hi'">Hindi</button>
+    <button (click)="useLanguage('zh')" [class.active]="curLang === 'zh'">Chinease</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

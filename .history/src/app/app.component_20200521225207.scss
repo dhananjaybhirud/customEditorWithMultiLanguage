@@ -1,0 +1,27 @@
+div
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p, .translated
+{
+  background-color: #aee2f3;
+  padding:1rem;
+}
+
+button {
+  border: none;
+
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px;
+  &.active{
+
+  background-color: #008CBA;
+
+  color: white;
+  }
+}
