@@ -1,33 +1,45 @@
 <header>
   <input [(colorPicker)]="color" [style.background]="color"/>
-  <select>
+
+  <select  [(ngModel)]="fontSize">
     <option value="10">10</option>
     <option value="12">12</option>
     <option value="14">14</option>
     <option value="16">16</option>
+    <option value="18">18</option>
+    <option value="20">20</option>
+    <option value="22">22</option>
   </select>
 </header>
-<div>
-  <h2 [ngStyle]="styles.title">
-    <input type="checkbox" [(ngModel)]="cTitle">
-    <span>{{ 'title' | translate }}</span>
-  </h2>
 
-  <p  [ngStyle]="styles.para">
-    <input type="checkbox" [(ngModel)]="cPara">
-     <span>{{ 'para' | translate }}</span>
-    </p>
+{{fontSize}}
 
-  <input type="checkbox" [(ngModel)]="cLink">
-  <a href="{{'link'}}"  [ngStyle]="styles.link">
-     <span>{{ 'linkText' | translate}}</span>
-    </a>
 
+<main>
   <div>
-    <button (click)="useLanguage('en')" [class.active]="curLang === 'en'">English</button>
-    <button (click)="useLanguage('hi')" [class.active]="curLang === 'hi'">Hindi</button>
-    <button (click)="useLanguage('zh')" [class.active]="curLang === 'zh'">Chinease</button>
+    <h2 [ngStyle]="styles.title">
+      <input type="checkbox" [(ngModel)]="cTitle">
+      <span>{{ 'title' | translate }}</span>
+    </h2>
+
+    <p  [ngStyle]="styles.para">
+      <input type="checkbox" [(ngModel)]="cPara">
+       <span>{{ 'para' | translate }}</span>
+      </p>
+
+    <input type="checkbox" [(ngModel)]="cLink">
+    <a href="{{'link'}}"  [ngStyle]="styles.link">
+       <span>{{ 'linkText' | translate}}</span>
+      </a>
+
+    <div>
+      <button (click)="useLanguage('en')" [class.active]="curLang === 'en'">English</button>
+      <button (click)="useLanguage('hi')" [class.active]="curLang === 'hi'">Hindi</button>
+      <button (click)="useLanguage('zh')" [class.active]="curLang === 'zh'">Chinease</button>
+    </div>
   </div>
-</div>
+</main>
+
+
 
 <router-outlet></router-outlet>

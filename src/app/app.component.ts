@@ -12,6 +12,12 @@ import defaultLanguage from './../assets/i18n/en.json';
 export class AppComponent implements DoCheck {
     curLang = 'en';
     color;
+    fontSize;
+    fontWeight;
+    fontStyle;
+    textDecoration;
+
+
     cTitle;
     cPara;
     cLink;
@@ -56,10 +62,14 @@ export class AppComponent implements DoCheck {
 
     ngDoCheck() {
       this.getData();
+      console.log(this.styles)
     }
 
     getData(){
-
         this.styles.title.color = this.color;
+        this.styles.title.fontSize = this.fontSize;
+        this.styles.title.fontWeight = this.fontWeight;
+        this.styles.title.fontStyle = this.fontStyle;
+        this.styles.title.textDecoration = this.textDecoration;
     }
 }
