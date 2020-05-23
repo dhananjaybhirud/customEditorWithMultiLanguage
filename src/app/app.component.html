@@ -2,35 +2,47 @@
   <input [(colorPicker)]="color" [style.background]="color"/>
 
   <select  [(ngModel)]="fontSize">
-    <option value="10">10</option>
-    <option value="12">12</option>
-    <option value="14">14</option>
-    <option value="16">16</option>
-    <option value="18">18</option>
-    <option value="20">20</option>
-    <option value="22">22</option>
+    <option value="10px">10</option>
+    <option value="12px">12</option>
+    <option value="14px">14</option>
+    <option value="16px">16</option>
+    <option value="18px">18</option>
+    <option value="20px">20</option>
+    <option value="22px">22</option>
   </select>
+
+  <label for="fontWeight"><input type="checkbox" [(ngModel)]="fontWeight" id="fontWeight">Bold </label>
+  <label for="fontItalic"><input type="checkbox" [(ngModel)]="fontStyle" id="fontItalic">Italic </label>
+  <label for="fontUnderline"><input type="checkbox" [(ngModel)]="textDecoration" id="fontUnderline">Underline</label>
+
 </header>
 
-{{fontSize}}
 
 
 <main>
   <div>
-    <h2 [ngStyle]="styles.title">
-      <input type="checkbox" [(ngModel)]="cTitle">
-      <span>{{ 'title' | translate }}</span>
-    </h2>
 
-    <p  [ngStyle]="styles.para">
-      <input type="checkbox" [(ngModel)]="cPara">
-       <span>{{ 'para' | translate }}</span>
+    <label for=title>
+      <h2 [ngStyle]="applyStyle(cTitle)">
+        <input type="checkbox" [(ngModel)]="cTitle" id="title">
+        <span>{{ 'title' | translate }}</span>
+      </h2>
+    </label>
+
+    <label for=para>
+      <p  [ngStyle]="styles.para">
+        <input type="checkbox" [(ngModel)]="cPara" id="para">
+        <span>{{ 'para' | translate }}</span>
       </p>
+    </label>
 
-    <input type="checkbox" [(ngModel)]="cLink">
+    <label for="link">
+
     <a href="{{'link'}}"  [ngStyle]="styles.link">
+      <input type="checkbox" [(ngModel)]="cLink" id="link">
        <span>{{ 'linkText' | translate}}</span>
       </a>
+    </label>
 
     <div>
       <button (click)="useLanguage('en')" [class.active]="curLang === 'en'">English</button>

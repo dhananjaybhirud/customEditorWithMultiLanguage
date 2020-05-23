@@ -47,12 +47,24 @@ export class AppComponent implements DoCheck {
     }
 
 
+    lines = [
+      {
+        element: "",
+        is_checked: false,
+        style: {},
+      }
+    ]
 
-    // fromCode = _('demo.text-in-code');
 
     constructor(private translate: TranslateService) {
         translate.setTranslation('en', defaultLanguage);
         translate.setDefaultLang('en');
+
+        this.lines.map((elem: any) => {
+          if(elem.is_checked){
+            // change style
+          }
+        })
     }
 
     useLanguage(language: string) {
@@ -65,11 +77,40 @@ export class AppComponent implements DoCheck {
       console.log(this.styles)
     }
 
+    getFontWeight(cond){
+        if(cond){
+          return '700';
+        } else{
+          return '400';
+        }
+    }
+
+    getFontStyle(cond){
+      if(cond){
+        return 'italic';
+      } else{
+        return 'normal';
+      }
+  }
+
+  getFontDecoration(cond){
+    if(cond){
+      return 'underline';
+    } else{
+      return 'none';
+    }
+}
+
     getData(){
+
         this.styles.title.color = this.color;
         this.styles.title.fontSize = this.fontSize;
-        this.styles.title.fontWeight = this.fontWeight;
-        this.styles.title.fontStyle = this.fontStyle;
-        this.styles.title.textDecoration = this.textDecoration;
+        this.styles.title.fontWeight = this.getFontWeight(this.fontWeight);
+        this.styles.title.fontStyle = this.getFontStyle(this.fontStyle);
+        this.styles.title.textDecoration = this.getFontDecoration(this.textDecoration);
+    }
+
+    applyStyle(title: string): any{
+      return this.styles.title;
     }
 }
