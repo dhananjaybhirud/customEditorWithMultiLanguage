@@ -1,7 +1,7 @@
 <header>
-  <input [(colorPicker)]="color" [style.background]="color"/>
-
-  <select  [(ngModel)]="fontSize">
+ <span>Color: <input [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="setStyle(color, 'color')"/></span>
+ <span>Font size:
+  <select [(ngModel)]="fontSize" (change)="setStyle(fontSize, 'fontSize')">
     <option value="10px">10</option>
     <option value="12px">12</option>
     <option value="14px">14</option>
@@ -10,10 +10,10 @@
     <option value="20px">20</option>
     <option value="22px">22</option>
   </select>
-
-  <label for="fontWeight"><input type="checkbox" [(ngModel)]="fontWeight" id="fontWeight">Bold </label>
-  <label for="fontItalic"><input type="checkbox" [(ngModel)]="fontStyle" id="fontItalic">Italic </label>
-  <label for="fontUnderline"><input type="checkbox" [(ngModel)]="textDecoration" id="fontUnderline">Underline</label>
+</span>
+  <label for="fontWeight"><input type="checkbox" [(ngModel)]="fontWeight" id="fontWeight" (change)="setStyle(fontWeight, 'fontWeight')">Bold </label>
+  <label for="fontItalic"><input type="checkbox" [(ngModel)]="fontStyle" id="fontItalic" (change)="setStyle(fontStyle, 'fontStyle')">Italic </label>
+  <label for="fontUnderline"><input type="checkbox" [(ngModel)]="textDecoration" id="fontUnderline" (change)="setStyle(textDecoration, 'textDecoration')">Underline</label>
 
 </header>
 
@@ -21,8 +21,10 @@
 
 <main>
   <div>
-
-    <label for=title>
+  <h2>{{ 'title' | translate }}</h2>
+  <p>{{ 'para' | translate }}</p>
+  <a>{{ 'linkText' | translate}}</a>
+    <!-- <label for=title>
       <h2 [ngStyle]="applyStyle(cTitle)">
         <input type="checkbox" [(ngModel)]="cTitle" id="title">
         <span>{{ 'title' | translate }}</span>
@@ -43,13 +45,20 @@
        <span>{{ 'linkText' | translate}}</span>
       </a>
     </label>
-
+ -->
+</div>
+<div>
+    <label *ngFor="let item of lines; index as i"  [ngStyle]="item.style" style="display: block;">
+      <input type="checkbox" [(ngModel)]="item.is_checked" id="check{{i}}">
+      {{item.element}}
+    </label>
+  </div>
     <div>
       <button (click)="useLanguage('en')" [class.active]="curLang === 'en'">English</button>
       <button (click)="useLanguage('hi')" [class.active]="curLang === 'hi'">Hindi</button>
       <button (click)="useLanguage('zh')" [class.active]="curLang === 'zh'">Chinease</button>
     </div>
-  </div>
+
 </main>
 
 
